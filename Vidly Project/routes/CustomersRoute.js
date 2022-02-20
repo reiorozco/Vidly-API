@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 
-const { customerSchema, validate } = require("../models/CustomerModel");
-
-// Model
-const Customer = mongoose.model("customer", customerSchema);
+const { Customer, validate } = require("../models/CustomerModel");
 
 router.get("/", async (req, res) => {
-  const customer = await Customer.find({}).sort({ name: "asc" });
+  const customers = await Customer.find({}).sort({ name: "asc" });
 
-  res.send(customer);
+  res.send(customers);
 });
 
 router.get("/:id", async (req, res) => {
@@ -38,7 +34,6 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const { error, value } = validate(req.body);
-
   if (error) return res.status(400).send(error.details[0].message);
 
   const { isGold, name, phone } = req.body;

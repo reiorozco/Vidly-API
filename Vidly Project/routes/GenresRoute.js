@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 
 // With Mongoose, everything is derived from a Schema
-const { genreSchema, validate } = require("../models/GenreModel");
+const { Genre, validate } = require("../models/GenreModel");
 
-// Compiling our schema into a Model (Collection = Table in SQL)
-const Genre = mongoose.model("Genre", genreSchema);
+// // Compiling our schema into a Model (Collection = Table in SQL)
+// const Genre = mongoose.model("Genre", genreSchema);
 
 // const genres = [
 //   { id: 1, name: "Action" },
