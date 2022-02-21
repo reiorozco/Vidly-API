@@ -1,0 +1,71 @@
+const { Schema, model } = require("mongoose");
+const Joi = require("joi");
+
+// Schema
+const rentalSchema = new Schema({
+  customer: {
+    type: new Schema({
+      isGold: {
+        type: Boolean,
+        default: false,
+      },
+      name: {
+        type: String,
+        required: true,
+        minLength: 3,
+        maxLength: 21,
+      },
+      phone: {
+        type: String,
+        required: true,
+        maxLength: 50,
+      },
+    }),
+    required: true,
+  },
+  movie: {
+    type: new Schema({
+      title: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 5,
+        maxlength: 255,
+      },
+      dailyRentalRate: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 255,
+      },
+    }),
+    required: true,
+  },
+  dateOut: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
+  dateReturned: {
+    type: Date,
+  },
+  rentalFee: {
+    type: Number,
+    min: 0,
+  },
+});
+
+//Model
+const Rental = model("Model", rentalSchema);
+
+//Validate
+const validateRental = (rental) => {
+  const schema = Joi.object({
+    customerId: Joi.string().required(),
+    movieId: Joi.string().required(),
+  });
+
+  return schema.validate(rental);
+};
+
+module.exports = { rentalSchema, Rental, validate: validateRental };
