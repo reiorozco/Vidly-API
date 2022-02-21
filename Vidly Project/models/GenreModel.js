@@ -8,7 +8,6 @@ const genreSchema = new Schema({
     required: true,
     minLength: 3,
     maxLength: 21,
-    unique: true,
   },
 });
 

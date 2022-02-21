@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
+// Joi.objectId = require("joi-objectid")(Joi);
 
 // Schema
 const rentalSchema = new Schema({
@@ -56,13 +57,13 @@ const rentalSchema = new Schema({
 });
 
 //Model
-const Rental = model("Model", rentalSchema);
+const Rental = model("Rental", rentalSchema);
 
 //Validate
 const validateRental = (rental) => {
   const schema = Joi.object({
-    customerId: Joi.string().required(),
-    movieId: Joi.string().required(),
+    customerId: Joi.objectId().required(),
+    movieId: Joi.objectId().required(),
   });
 
   return schema.validate(rental);
