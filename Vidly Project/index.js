@@ -16,6 +16,11 @@ const authRoute = require("./routes/AuthRoute");
 
 const app = express();
 
+if (!config.JWT_PRIVATE_KEY) {
+  console.error("FATAL ERROR: jwtPrivateKey isn't defined.");
+  process.exit(1);
+}
+
 // Open a connection
 mongoose
   .connect("mongodb://localhost/vidly")
