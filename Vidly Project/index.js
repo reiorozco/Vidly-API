@@ -11,7 +11,8 @@ const genresRoute = require("./routes/GenresRoute");
 const customersRoute = require("./routes/CustomersRoute");
 const moviesRoute = require("./routes/MoviesRoute");
 const rentalsRoute = require("./routes/RentalsRoute");
-const usersRoutes = require("./routes/UsersRoute");
+const usersRoute = require("./routes/UsersRoute");
+const authRoute = require("./routes/AuthRoute");
 
 const app = express();
 
@@ -38,7 +39,8 @@ app.use("/api/genres", genresRoute);
 app.use("/api/customers", customersRoute);
 app.use("/api/movies", moviesRoute);
 app.use("/api/rentals", rentalsRoute);
-app.use("/api/users", usersRoutes);
+app.use("/api/users", usersRoute);
+app.use("/api/auth", authRoute);
 
 app.get("/", (req, res) => {
   res.render("index", { title: "My Express App", message: "Hello" });
