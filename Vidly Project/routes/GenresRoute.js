@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
+
 // With Mongoose, everything is derived from a Schema
 const { Genre, validate } = require("../models/GenreModel");
 
@@ -27,7 +30,7 @@ router.get("/:id", async (req, res) => {
   res.send(genre);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error, value } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -63,7 +66,7 @@ router.put("/:id", async (req, res) => {
   res.send(genre);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const genre = await Genre.findByIdAndDelete({ _id: req.params.id });
   // const genre = genres.find((c) => c.id === parseInt(req.params.id));
 
