@@ -6,7 +6,11 @@ const debug = require("debug")("Log");
 const mongoose = require("mongoose");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
+const { format, transports } = require("winston");
+
 const errorHandler = require("./middleware/error");
+const logger = require("./logger");
+require("winston-mongodb");
 
 const config = require("./config/config");
 const genresRoute = require("./routes/GenresRoute");
@@ -18,6 +22,24 @@ const authRoute = require("./routes/AuthRoute");
 
 const app = express();
 
+// Logger
+if (process.env.NODE_ENV !== "production") {
+  logger.add(
+    new transports.Console({
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+    logger.add(
+      new transports.MongoDB({
+        db: "mongodb://localhost/vidly",
+        options: {
+          useUnifiedTopology: true,
+        },
+      })
+    )
+  );
+}
+
+// Json Web Token
 if (!config.JWT_PRIVATE_KEY) {
   console.error("FATAL ERROR: jwtPrivateKey isn't defined.");
   process.exit(1);
