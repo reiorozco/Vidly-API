@@ -3,6 +3,7 @@ const router = express.Router();
 
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
+// const asyncMiddleware = require("../middleware/async");
 
 // With Mongoose, everything is derived from a Schema
 const { Genre, validate } = require("../models/GenreModel");
@@ -18,7 +19,6 @@ const { Genre, validate } = require("../models/GenreModel");
 
 router.get("/", async (req, res) => {
   const genres = await Genre.find({}).sort({ name: "asc" });
-
   res.send(genres);
 });
 

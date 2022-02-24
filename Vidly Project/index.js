@@ -1,3 +1,4 @@
+require("express-async-errors");
 const express = require("express");
 const helmet = require("helmet");
 const morgan = require("morgan");
@@ -5,6 +6,7 @@ const debug = require("debug")("Log");
 const mongoose = require("mongoose");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
+const errorHandler = require("./middleware/error");
 
 const config = require("./config/config");
 const genresRoute = require("./routes/GenresRoute");
@@ -50,6 +52,9 @@ app.use("/api/auth", authRoute);
 app.get("/", (req, res) => {
   res.render("index", { title: "My Express App", message: "Hello" });
 });
+
+// Error Handler
+app.use(errorHandler);
 
 // const port = process.env.PORT || 3000;
 app.listen(config.PORT, config.HOST, () =>
