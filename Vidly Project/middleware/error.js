@@ -1,4 +1,4 @@
-const logger = require("../logger");
+const logger = require("winston");
 
 module.exports = function (err, req, res, next) {
   // if (res.headersSent) {
