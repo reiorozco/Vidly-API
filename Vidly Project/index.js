@@ -22,6 +22,20 @@ const authRoute = require("./routes/AuthRoute");
 
 const app = express();
 
+// process.on("uncaughtException", (ex) => {
+//   logger.error(new Error(ex));
+//   process.exit(1);
+// });
+logger.add(
+  new transports.File({
+    filename: "exceptions.log",
+    handleExceptions: true,
+  })
+);
+process.on("unhandledrejection", (ex) => {
+  throw ex;
+});
+
 // Logger
 if (process.env.NODE_ENV !== "production") {
   logger.add(
