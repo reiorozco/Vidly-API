@@ -1,0 +1,17 @@
+{
+  "name": "testing-demo",
+  "version": "1.0.0",
+  "description": "Testing demo",
+  "main": "db.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "jest"
+  ],
+  "author": "Rei O",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
