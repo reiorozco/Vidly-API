@@ -7,7 +7,7 @@ const { Customer } = require("../models/CustomerModel");
 const { Movie } = require("../models/MovieModel");
 
 router.get("/", async (req, res) => {
-  const rentals = Rental.find({}).sort({ dateOut: "desc" });
+  const rentals = await Rental.find({}).sort({ dateOut: "desc" });
 
   res.send(rentals);
 });

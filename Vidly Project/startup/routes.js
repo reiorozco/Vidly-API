@@ -33,7 +33,7 @@ module.exports = function (app) {
   app.use("/api/auth", authRoute);
 
   app.get("/", (req, res) => {
-    res.render("index", { title: "My Express App", message: "Hello" });
+    res.render("index", { title: "Vidly Project", message: "Vidly Movies" });
   });
 
   // Error Handler

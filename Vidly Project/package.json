@@ -8,10 +8,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "dev": "set NODE_ENV=development&& nodemon",
-    "prod": "set NODE_ENV=production&& node index.js",
-    "debug": "set DEBUG=Log& node index.js"
+    "test": "jest --watchAll --verbose",
+    "dev": "export NODE_ENV=development&& nodemon",
+    "prod": "export NODE_ENV=production&& node index.js",
+    "debug": "export DEBUG=Log& node index.js"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +39,7 @@
     "eslint-plugin-node": "^11.1.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "supertest": "^6.2.2"
   }
 }
