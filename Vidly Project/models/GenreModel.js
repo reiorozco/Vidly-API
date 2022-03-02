@@ -16,7 +16,7 @@ const Genre = model("Genre", genreSchema);
 
 function validateGenre(genre) {
   const schema = Joi.object({
-    name: Joi.string().min(3).required(),
+    name: Joi.string().min(3).max(21).required(),
   });
 
   return schema.validate(genre);
