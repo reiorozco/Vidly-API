@@ -9,6 +9,7 @@ const moviesRoute = require("../routes/MoviesRoute");
 const rentalsRoute = require("../routes/RentalsRoute");
 const usersRoute = require("../routes/UsersRoute");
 const authRoute = require("../routes/AuthRoute");
+const returnsRoute = require("../routes/ReturnsRoute");
 const errorHandler = require("../middleware/error");
 
 module.exports = function (app) {
@@ -31,6 +32,7 @@ module.exports = function (app) {
   app.use("/api/rentals", rentalsRoute);
   app.use("/api/users", usersRoute);
   app.use("/api/auth", authRoute);
+  app.use("/api/returns", returnsRoute);
 
   app.get("/", (req, res) => {
     res.render("index", { title: "Vidly Project", message: "Vidly Movies" });

@@ -26,7 +26,7 @@ const userSchema = new Schema({
   isAdmin: Boolean,
 });
 
-// Auth Token
+// Auth Token - Instance method
 userSchema.methods.generateAuthToken = function () {
   return jwt.sign(
     { _id: this._id, isAdmin: this.isAdmin },
