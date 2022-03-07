@@ -161,7 +161,7 @@ describe("/api/genres", () => {
     });
 
     it("should return 404 if id is invalid", async () => {
-      id = 1;
+      id = "invalidId";
 
       const res = await exec();
 
@@ -240,7 +240,7 @@ describe("/api/genres", () => {
     });
 
     it("should return 404 if id is invalid", async () => {
-      id = 1;
+      id = "invalidId";
 
       const res = await exec();
 
