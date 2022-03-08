@@ -53,4 +53,4 @@ function userValidate(user) {
   return schema.validate(user);
 }
 
-module.exports = { userSchema, User, validate: userValidate };
+module.exports = { userSchema, User, userValidate };
