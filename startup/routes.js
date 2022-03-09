@@ -1,5 +1,4 @@
 const express = require("express");
-const helmet = require("helmet");
 const morgan = require("morgan");
 const debug = require("debug")("Log");
 
@@ -15,8 +14,6 @@ const errorHandler = require("../middleware/error");
 module.exports = function (app) {
   app.set("view engine", "pug");
   app.set("views", "./views");
-
-  app.use(helmet());
 
   if (app.get("env") === "development") {
     app.use(morgan("tiny"));
