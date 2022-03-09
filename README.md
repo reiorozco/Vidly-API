@@ -1,6 +1,6 @@
 # Vidly-API
 
-In this practice learned how to build highly-scalable, fast and secure RESTful APIs with Node, Express, and MongoDB....
+In this practice learned how to build highly-scalable, fast and secure RESTful APIs with Node, Express and MongoDB…
 
 -   All about Node module system
 -   Use existing Node packages or publish your own
