@@ -13,9 +13,9 @@ if (config.NODE_ENV === "production") {
   require("./startup/prod")(app);
 }
 
-const server = app.listen(config.PORT, config.HOST, () =>
+const server = app.listen(process.env.PORT, process.env.HOST, () =>
   logger.info(
-    `NODE_ENV=${config.NODE_ENV}\nApp listening on http://${config.HOST}:${config.PORT}`
+    `NODE_ENV=${process.env.NODE_ENV}\nApp listening on http://${process.env.HOST}:${process.env.PORT}`
   )
 );
 
