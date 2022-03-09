@@ -8,6 +8,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest --watchAll --verbose --detectOpenHandles --coverage",
     "dev": "export NODE_ENV=development&& nodemon",
     "prod": "export NODE_ENV=production&& node index.js",
