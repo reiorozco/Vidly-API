@@ -29,7 +29,12 @@ const userSchema = new Schema({
 // Auth Token - Instance method
 userSchema.methods.generateAuthToken = function () {
   return jwt.sign(
-    { _id: this._id, isAdmin: this.isAdmin },
+    {
+      _id: this._id,
+      name: this.name,
+      email: this.email,
+      isAdmin: this.isAdmin,
+    },
     config.JWT_PRIVATE_KEY
   );
 };
