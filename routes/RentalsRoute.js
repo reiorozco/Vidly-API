@@ -2,17 +2,19 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
+const auth = require("../middleware/auth");
+const validateObjectId = require("../middleware/validateObjectId");
 const { Rental, validate } = require("../models/RentalModel");
 const { Customer } = require("../models/CustomerModel");
 const { Movie } = require("../models/MovieModel");
 
-router.get("/", async (req, res) => {
+router.get("/", [auth], async (req, res) => {
   const rentals = await Rental.find({}).sort({ dateOut: "desc" });
 
   res.send(rentals);
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", [auth, validateObjectId], async (req, res) => {
   const rental = await Rental.findById(req.params.id);
 
   if (!rental)
@@ -21,7 +23,7 @@ router.get("/:id", async (req, res) => {
   res.send(rental);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", [auth], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 

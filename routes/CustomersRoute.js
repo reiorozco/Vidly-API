@@ -3,15 +3,16 @@ const router = express.Router();
 
 const { Customer, validateCustomer } = require("../models/CustomerModel");
 const validateObjectId = require("../middleware/validateObjectId");
+const auth = require("../middleware/auth");
 const validate = require("../middleware/validate");
 
-router.get("/", async (req, res) => {
+router.get("/", [auth], async (req, res) => {
   const customers = await Customer.find({}).sort({ name: "asc" });
 
   res.send(customers);
 });
 
-router.get("/:id", validateObjectId, async (req, res) => {
+router.get("/:id", [auth, validateObjectId], async (req, res) => {
   const customer = await Customer.findById(req.params.id);
 
   if (!customer) return res.status(404).send("This customer wasn't found.");
@@ -19,7 +20,7 @@ router.get("/:id", validateObjectId, async (req, res) => {
   res.send(customer);
 });
 
-router.post("/", validate(validateCustomer), async (req, res) => {
+router.post("/", [auth, validate(validateCustomer)], async (req, res) => {
   const { isGold, name, phone } = req.body;
 
   let customer = new Customer({
@@ -34,7 +35,7 @@ router.post("/", validate(validateCustomer), async (req, res) => {
 
 router.put(
   "/:id",
-  [validateObjectId, validate(validateCustomer)],
+  [auth, validateObjectId, validate(validateCustomer)],
   async (req, res) => {
     const { isGold, name, phone } = req.body;
 
@@ -50,7 +51,7 @@ router.put(
   }
 );
 
-router.delete("/:id", validateObjectId, async (req, res) => {
+router.delete("/:id", [auth, validateObjectId], async (req, res) => {
   const customer = await Customer.findByIdAndDelete({ _id: req.params.id });
 
   if (!customer) return res.status(404).send("This customer wasn't found.");
