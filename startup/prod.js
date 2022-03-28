@@ -9,7 +9,7 @@ module.exports = function (app) {
     cors({
       origin: [
         "https://vidly-app-reiorozco.herokuapp.com",
-        "http://localhost:*",
+        "http://localhost:3000",
       ],
       credentials: true,
     })
