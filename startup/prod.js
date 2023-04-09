@@ -11,6 +11,7 @@ module.exports = function (app) {
         "https://vidly-app-six.vercel.app",
         "https://vidly-app-reiorozco.vercel.app",
         "https://vidly-app-git-master-reiorozco.vercel.app",
+        "https://vidly-akapc4006-reiorozco.vercel.app/",
         "http://localhost:3000",
       ],
       credentials: true,
