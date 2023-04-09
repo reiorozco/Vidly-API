@@ -22,7 +22,7 @@ describe("/api/returns", () => {
   };
 
   beforeEach(async () => {
-    server = require("../../index");
+    server = require("../../api");
 
     customerId = mongoose.Types.ObjectId();
     movieId = mongoose.Types.ObjectId();

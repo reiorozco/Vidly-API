@@ -7,7 +7,7 @@ let server;
 
 describe("auth middleware", () => {
   beforeEach(() => {
-    server = require("../../index");
+    server = require("../../api");
   });
   afterEach(async () => {
     await Genre.deleteMany({});
@@ -52,7 +52,7 @@ describe("auth middleware", () => {
 
 describe("/api/auth", () => {
   beforeEach(() => {
-    server = require("../../index");
+    server = require("../../api");
   });
   afterEach(async () => {
     await User.deleteMany({});

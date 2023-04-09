@@ -7,7 +7,7 @@ let server;
 
 describe("/api/customers", () => {
   beforeEach(() => {
-    server = require("../../index");
+    server = require("../../api");
   });
   afterEach(async () => {
     await Customer.deleteMany({});

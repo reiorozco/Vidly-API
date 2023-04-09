@@ -1,16 +1,16 @@
 const express = require("express");
 const app = express();
-const config = require("./config/config");
+const config = require("../config/config");
 const logger = require("winston");
 
 if (config.NODE_ENV === "production") {
-  require("./startup/prod")(app);
+  require("../startup/prod")(app);
 }
-require("./startup/logging")();
-require("./startup/routes")(app);
-require("./startup/db")();
-require("./startup/config")();
-require("./startup/validation")();
+require("../startup/logging")();
+require("../startup/routes")(app);
+require("../startup/db")();
+require("../startup/config")();
+require("../startup/validation")();
 
 const server = app.listen(process.env.PORT, process.env.HOST, () =>
   logger.info(
