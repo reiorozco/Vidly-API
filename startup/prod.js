@@ -9,6 +9,8 @@ module.exports = function (app) {
     cors({
       origin: [
         "https://vidly-app-six.vercel.app",
+        "https://vidly-app-reiorozco.vercel.app",
+        "https://vidly-app-git-master-reiorozco.vercel.app",
         "http://localhost:3000",
       ],
       credentials: true,
