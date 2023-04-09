@@ -8,7 +8,7 @@ module.exports = function (app) {
   app.use(
     cors({
       origin: [
-        "https://vidly-app-reiorozco.herokuapp.com",
+        "https://vidly-app-six.vercel.app",
         "http://localhost:3000",
       ],
       credentials: true,
